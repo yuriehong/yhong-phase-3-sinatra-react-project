@@ -23,10 +23,13 @@ function AnimePage() {
     })
     .then(res => res.json())
     .then(data => data)
+
+    //deletes the anime from the animes state
+    let filteredAnimes = animes.filter(anime => {
+      return anime.id !== id
+  })
+    setAnimes(filteredAnimes)
     
-    fetch(`http://localhost:9292/animes`)
-      .then(resp => resp.json())
-      .then(data => setAnimes(data))
   }
  
   return (

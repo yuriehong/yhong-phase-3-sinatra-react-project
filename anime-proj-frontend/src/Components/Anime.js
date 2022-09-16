@@ -33,7 +33,7 @@ function Anime({anime, deleteAnime}) {
 function deleteA(){
   deleteAnime(anime.id)
 }
-
+//deleting a review
   function handleDelete(id){
     
     fetch(`http://localhost:9292/animes/reviews/${id}`, {
@@ -72,12 +72,12 @@ console.log(reviews)
       <button className="button"  id ="showR" onClick= {handleReviews}>{showReviews ? "Hide Reviews": "Show Reviews"}</button>
     
       <div id ="reviews" >
-        <ul className="cards"> {reviews.map(review => <Review myReview={review} handleDelete = {handleDelete} key ={review.id} />)} </ul>
+        <ul className="cards"> {reviews.map(review => <Review myReview={review} handleDelete = {handleDelete} setReviews= {setReviews} key ={review.id} />)} </ul>
       </div>
       {!showReviews ? 
       <button className = "button" id="newR" onClick = {handleNew}>New Review</button> : <p></p>
 }
-      {showForm ? <ReviewForm curr_anime = {anime}/> : ""} 
+      {showForm ? <ReviewForm curr_anime = {anime} setReviews = {setReviews}/> : ""} 
       
       </div>
 

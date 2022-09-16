@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 
-function Review({myReview, handleDelete}) {
+function Review({myReview, handleDelete, setReviews}) {
     console.log(myReview)
     const [user, setUser] = useState({})
     const[showEdit, setShowEdit] = useState(false)
@@ -12,20 +12,28 @@ function Review({myReview, handleDelete}) {
       .then(resp => resp.json())
       .then(data => setUser(data))
       },[])
-
+    
+      //handling edit review form submission
     function handleEdit(e){
       e.preventDefault()
-
+      //updating review
       fetch(`http://localhost:9292/reviews/${myReview.id}`, {
         method : "PATCH",
         headers : {
           "Content-Type" : "application/json"
         },
-        body : JSON.stringify({rating: rate,
-        commentary: comment})
+        body : JSON.stringify(
+          {rating: rate,
+        comment: comment}
+        )
       })
       .then(res => res.json())
       .then(data => data)
+      
+      //refreshing the reviews data
+      fetch(`http://localhost:9292/animes/${myReview.anime_id}/reviews`)
+      .then(resp => resp.json())
+      .then(data => setReviews(data))
 
       setShowEdit(!showEdit)
 

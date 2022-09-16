@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-function ReviewForm({curr_anime}){
+function ReviewForm({curr_anime, setReviews}){
     // t.integer "rating"
     // t.string "comment"
     // t.integer "anime_id"
@@ -27,6 +27,9 @@ function ReviewForm({curr_anime}){
     })
     .then(res => res.json())
     .then(data => data)
+    fetch(`http://localhost:9292/animes/${curr_anime.id}/reviews`)
+      .then(resp => resp.json())
+      .then(data => setReviews(data))
 
     setRating("")
     setComment("")
