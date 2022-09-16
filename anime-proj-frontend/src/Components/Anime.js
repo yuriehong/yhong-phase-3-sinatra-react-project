@@ -6,13 +6,15 @@ function Anime({anime, deleteAnime}) {
   const [showReviews, setShowReviews] = useState(false)
   const [reviews, setReviews] = useState([])
   const [showForm, setShowForm] = useState(false)
+  const [showSum, setShowSum] = useState(false)
+
 
 
 
   function handleReviews() {
     //const rev = document.getElementById('reviews');
       if(showReviews == false){
-      fetch(`http://localhost:9292/reviews/${anime.id}`)
+      fetch(`http://localhost:9292/animes/${anime.id}/reviews`)
       .then(resp => resp.json())
       .then(data => setReviews(data))
      // rev.style.display = "block"
@@ -43,13 +45,16 @@ function deleteA(){
     })
     .then(res => res.json())
     .then(data => data)
-    fetch(`http://localhost:9292/reviews/${anime.id}`)
+    fetch(`http://localhost:9292/animes/${anime.id}/reviews`)
       .then(resp => resp.json())
       .then(data => setReviews(data))
   }
   
 function handleNew(){
       setShowForm(!showForm)
+}
+function handleSum(){
+  setShowSum(!showSum)
 }
 
 console.log(reviews)
@@ -58,11 +63,11 @@ console.log(reviews)
     <div className="card">
       <button className = "button" id="deleteA" onClick = {deleteA}> X </button> 
 
-      <img src={anime.img} alt={anime.title} width ="100" height = "100"  />
+      <img src={anime.img} alt={anime.title}  />
       <h3>Anime: {anime.title}</h3>
-      <p>Summary: {anime.summary}</p>
-      <p>Number of episodes: {anime.episodes}</p>
-      <p>Year Released: {anime.year}</p>
+      <p><button id = "summary" onClick = {handleSum}>Summary</button>{showSum ? anime.summary : ""}</p>
+      <p><b>Number of episodes: </b> {anime.episodes}</p>
+      <p><b>Year Released: </b> {anime.year}</p>
       
       <button className="button"  id ="showR" onClick= {handleReviews}>{showReviews ? "Hide Reviews": "Show Reviews"}</button>
     

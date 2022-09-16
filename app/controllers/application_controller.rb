@@ -33,6 +33,11 @@ class ApplicationController < Sinatra::Base
     # send a response with the deleted review as JSON
     review.to_json
   end
+  get '/animes/:id/reviews' do
+    anime = Anime.find(params[:id])
+    reviews =anime.reviews
+    reviews.to_json
+  end
 
   get '/reviews' do
     review = Review.all
@@ -40,10 +45,10 @@ class ApplicationController < Sinatra::Base
     review.to_json
   end
   get '/reviews/:id' do
-    anime = Anime.find(params[:id])
-    reviews =anime.reviews
-    reviews.to_json
+    review = Review.find(params[:id])
+    review.to_json
   end
+  
   post '/reviews' do
     review = Review.create(
       rating: params[:rating],

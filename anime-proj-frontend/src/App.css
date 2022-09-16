@@ -20,6 +20,7 @@ h1{
   margin: 1rem 2rem;
   box-shadow: 1px 1px rgb(35, 35, 121);
   display: inline-grid;
+  padding:1px;
 }
 .card h3{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -27,6 +28,9 @@ h1{
 }
 .card img{
   text-align: center;
+  margin: auto;
+   width: 250px;
+   height: 175px;
 
 }
 header{
@@ -54,7 +58,13 @@ header{
   left: 20%;
   bottom: 80%
 }
-  
+#deleteA{
+  left: 40%;
+}
+#summary{
+  background-color: whitesmoke;
+
+}
 button:hover {
   background-color: whitesmoke;
   border: gray solid 1px;
@@ -86,3 +96,4 @@ button:hover {
   padding: 1.50rem;
   font-family: 'Courier New', Courier, monospace;
 }
+
