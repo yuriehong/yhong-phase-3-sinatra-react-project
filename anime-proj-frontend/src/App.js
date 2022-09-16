@@ -1,25 +1,24 @@
-import Header from "./Header";
+import Header from "./Components/Header";
 import AnimePage from "./Components/AnimePage";
 import './App.css';
 import React,{useState, useEffect} from "react"
 
 function App() {
-  const [users,setUsers] = useState([])
-  const [user, setUser] = useState({})
-  const [animes,setAnimes] = useState([])
+  // const [users,setUsers] = useState([])
+  // const [user, setUser] = useState({})
 
-  useEffect(() => {
-    fetch("http://localhost:9292/users")
-    .then(resp => resp.json())
-    .then(data => setUsers(data)
-    )
-  },[])
-  useEffect(() => {
-    fetch("http://localhost:9292/users/:id")
-    .then(resp => resp.json())
-    .then(data => setUser(data)
-    )
-  },[])
+  // useEffect(() => {
+  //   fetch("http://localhost:9292/users")
+  //   .then(resp => resp.json())
+  //   .then(data => setUsers(data)
+  //   )
+  // },[])
+  // useEffect(() => {
+  //   fetch("http://localhost:9292/users/:id")
+  //   .then(resp => resp.json())
+  //   .then(data => setUser(data)
+  //   )
+  // },[])
 
   return (
     <div className="app">

@@ -1,13 +1,65 @@
 .App {
   text-align: center;
 }
+h1{
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
-#logo {
-  height: 30px;
-  width: 30px;
 }
+#logo {
+  height: 50px;
+  width: 50px;
+  margin-left:25px;
+  margin-top:7px;
+}
+.card {
+  text-align: center;
+  border: grey solid 1px;
+  width: 25rem;
+  height: auto;
+  margin: 1rem 2rem;
+  box-shadow: 1px 1px rgb(35, 35, 121);
+  display: inline-grid;
+}
+.card h3{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
+}
+.card img{
+  text-align: center;
 
+}
+header{
+  background-color: rgb(233, 209, 245);
+ }
+.button{
+    position: relative;
+    background-color: skyblue;
+    border: none;
+    border-radius: 5px;
+    height: 3rem;
+    width: max-content;
+    color: whitesmoke;
+    justify-self: center;
+    font-size: 15px;
+    margin: 2px;
+    text-align: center;
+
+  }
+  #showR{
+    right: 20%;
+    bottom: -20%
+  }
+#newR{
+  left: 20%;
+  bottom: 80%
+}
+  
+button:hover {
+  background-color: whitesmoke;
+  border: gray solid 1px;
+  color: darkblue;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,4 +75,14 @@
   color: #61dafb;
 }
 
-
+.form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0 auto;
+  border: 1px, rgb(254, 254, 254);
+  background:rgb(244, 194, 217);
+  padding: 1.50rem;
+  font-family: 'Courier New', Courier, monospace;
+}
