@@ -15,8 +15,9 @@ use Rack::JSONBodyParser
 # Our application
 use Rack::MethodOverride
 
+use UserController
 use AnimeController
-#use ReviewController
+use ReviewController
 
 run ApplicationController
 
