@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/" do
-    { message: "Good luck with your project!" }.to_json
+    { message: "Good luck!" }.to_json
   end
 
   get '/animes' do
@@ -62,7 +62,7 @@ class ApplicationController < Sinatra::Base
     review.to_json
   end
 
-  get "/users/:id" do
+  get '/users/:id' do
     user = User.find(params[:id])
     user.to_json
   end

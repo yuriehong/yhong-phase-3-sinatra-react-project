@@ -3,14 +3,38 @@ import React,{useState, useEffect} from "react";
 function Review({myReview, handleDelete}) {
     console.log(myReview)
     const [user, setUser] = useState({})
-    function handleClick(){
-        handleDelete(myReview.id)
-    }
+    const[showEdit, setShowEdit] = useState(false)
+    const [comment, setComment] = useState(myReview.comment)
+    const [rate, setRate] = useState(myReview.rating)
+
     useEffect(() => {
       fetch(`http://localhost:9292/users/${myReview.user_id}`)
       .then(resp => resp.json())
       .then(data => setUser(data))
       },[])
+
+    function handleEdit(e){
+      e.preventDefault()
+
+      fetch(`http://localhost:9292/reviews/${myReview.id}`, {
+        method : "PATCH",
+        headers : {
+          "Content-Type" : "application/json"
+        },
+        body : JSON.stringify({rating: rate,
+        commentary: comment})
+      })
+      .then(res => res.json())
+      .then(data => data)
+
+      setShowEdit(!showEdit)
+
+    }
+    function handleClick(){
+        handleDelete(myReview.id)
+    }
+  
+     
     
     return (
         <div>
@@ -21,8 +45,42 @@ function Review({myReview, handleDelete}) {
           <i>Created by: {user.name}</i>
 
           <button id = "button" onClick = {handleClick}>Delete Review</button> 
+          <button id = "button" onClick = {handleEdit}>Edit Review</button> 
+          {showEdit ? 
+          <div className="form">
+        <form onSubmit={handleEdit}>
+          <h3>Edit Review</h3>
+          
+          <input
+            value={rate}
+            onChange={(e) => setRate(e.target.value)}
+            type="text"
+            name="name"
+            placeholder="Anime Rating"
+            id="description"
+          />
+                 
+          <input
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            type="textarea"
+            name="name"
+            placeholder="Comment"
+            className="input-text"
+          />
+          <br />
+          
+          <input
+            type="submit"
+            name="submit"
+            value="Submit edit"
+            className="submit"
+          />
+        </form>
+        </div> : <p></p>}
 
-          </div>
+
+          </div> 
       );
 }
 
