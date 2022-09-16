@@ -37,9 +37,7 @@ class ApplicationController < Sinatra::Base
   get '/reviews' do
     review = Review.all
 
-    review.to_json(only: [:comment, :rating], include: {
-        user: { only: [:name] }})
-     
+    review.to_json
   end
   get '/reviews/:id' do
     anime = Anime.find(params[:id])
@@ -62,6 +60,11 @@ class ApplicationController < Sinatra::Base
       rating: params[:rating],
       comment: params[:comment])
     review.to_json
+  end
+
+  get "/users/:id" do
+    user = User.find(params[:id])
+    user.to_json
   end
 
 end

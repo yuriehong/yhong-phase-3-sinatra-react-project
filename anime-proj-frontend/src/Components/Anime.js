@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React,{useState} from "react";
 import Review from "./Review.js"
 import ReviewForm from "./ReviewForm"
 
@@ -69,8 +69,9 @@ console.log(reviews)
       <div id ="reviews" >
         <ul className="cards"> {reviews.map(review => <Review myReview={review} handleDelete = {handleDelete} key ={review.id} />)} </ul>
       </div>
-      
-      <button className = "button" id="newR" onClick = {handleNew}>New Review</button> 
+      {!showReviews ? 
+      <button className = "button" id="newR" onClick = {handleNew}>New Review</button> : <p></p>
+}
       {showForm ? <ReviewForm curr_anime = {anime}/> : ""} 
       
       </div>
